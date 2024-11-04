@@ -1,6 +1,9 @@
 <?php
-require_once plugin_dir_path(__FILE__) . 'wc_credentials.php';
 $image_name_before_removal = '';
+$username = get_option('wc_sync_photo_username');
+$password = get_option('wc_sync_photo_password');
+$url = get_option('wc_sync_photo_url');
+
 
 // Função de log
 function wc_sync_log($message) {
@@ -47,16 +50,16 @@ function wc_sync_on_product_save($post_id, $post, $update) {
 
 // Função de sincronização de imagem (envia ao outro site)
 function wc_sync_update_product_photo($sku, $image_url) {
-    global $wc_user, $wc_application_password, $wc_site_url;
+    global $username, $password, $url;
 
     wc_sync_log("Sincronização iniciada para SKU: $sku");
 
     try {
         // Busca o produto no outro site
-        $request_url = $wc_site_url . '/wc/v3/products?sku=' . $sku;
+        $request_url = $url . '/wc/v3/products?sku=' . $sku;
         $response = wp_remote_get($request_url, array(
             'headers' => array(
-                'Authorization' => 'Basic ' . base64_encode($wc_user . ':' . $wc_application_password)
+                'Authorization' => 'Basic ' . base64_encode($username . ':' . $password)
             )
         ));
 
@@ -75,10 +78,10 @@ function wc_sync_update_product_photo($sku, $image_url) {
         $product_id = $body[0]['id'];
         wc_sync_log("Produto encontrado. ID: $product_id. Tentando adicionar imagem...");
 
-        $update_response = wp_remote_post("$wc_site_url/wc/v3/products/$product_id", array(
+        $update_response = wp_remote_post("$url/wc/v3/products/$product_id", array(
             'method' => 'PUT',
             'headers' => array(
-                'Authorization' => 'Basic ' . base64_encode($wc_user . ':' . $wc_application_password),
+                'Authorization' => 'Basic ' . base64_encode($username . ':' . $password),
                 'Content-Type' => 'application/json'
             ),
             'body' => json_encode(array(
@@ -126,15 +129,15 @@ function check_and_remove_image_on_update($post_id, $post, $update) {
 
 // Função de remoção de imagem
 function wc_sync_remove_image_by_name($image_name) {
-    global $wc_user, $wc_application_password, $wc_site_url;
+    global $username, $password, $url;
 
     wc_sync_log("Iniciando remoção de imagem com nome: $image_name");
 
     try {
-        $media_search_url = $wc_site_url . "/wp/v2/media?search=" . urlencode($image_name);
+        $media_search_url = $url . "/wp/v2/media?search=" . urlencode($image_name);
         $response = wp_remote_get($media_search_url, array(
             'headers' => array(
-                'Authorization' => 'Basic ' . base64_encode($wc_user . ':' . $wc_application_password)
+                'Authorization' => 'Basic ' . base64_encode($username . ':' . $password)
             )
         ));
 
@@ -153,14 +156,14 @@ function wc_sync_remove_image_by_name($image_name) {
         foreach ($body as $media_item) {
             if (strpos($media_item['source_url'], $image_name) !== false) {
                 $image_id = $media_item['id'];
-                $delete_url = $wc_site_url . "/wp/v2/media/$image_id";
+                $delete_url = $url . "/wp/v2/media/$image_id";
 
                 wc_sync_log("Tentando remover a imagem com ID $image_id no outro site.");
 
                 $delete_response = wp_remote_request($delete_url, array(
                     'method' => 'DELETE',
                     'headers' => array(
-                        'Authorization' => 'Basic ' . base64_encode($wc_user . ':' . $wc_application_password)
+                        'Authorization' => 'Basic ' . base64_encode($username . ':' . $password)
                     ),
                     'body' => array('force' => true)
                 ));
