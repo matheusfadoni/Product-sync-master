@@ -2,7 +2,7 @@
 /*
 Plugin Name: Wc Sync Photo
 Description: Plugin para sincronizar fotos de produtos entre WP / WooCommerce baseado no SKU.
-Version: 0.5
+Version: 0.1
 Author: Matheus 
 */
 
