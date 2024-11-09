@@ -22,7 +22,7 @@ Basicamente adiciona foto ao produo ou exclui, replicando no site alvo oque é f
 - sincronizar preço<br>
 - sincronizar estoque<br>
 - sincronizar descrição<br>
-<h6>Nesta etapa chegaremos á versão 1.4</h6>
+<h6>Nesta etapa chegaremos á versão 1.2</h6>
 
 <h3>Funcionalidades que vou adicionar no longo prazo</h3>
 - sincronizar com outros marketplaces (Mercado Livre será a primeira opção)<br>
