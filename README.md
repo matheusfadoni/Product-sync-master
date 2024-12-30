@@ -1,5 +1,5 @@
 # wp-sync
-Este plugin para wordpress está em fase extremamente prematura 0.1<br>
+Este plugin para wordpress está em fase extremamente prematura<br>
 atualmente suas funcionalidades são:<br>
 Desde que hajam produtos com o mesmo SKU, ao salvar um produto este plugin irá sincronizar as imagens automaticamente conforme você edita produtos no site principal.<br>
 Basicamente adiciona foto ao produo ou exclui, replicando no site alvo oque é feito no site principal.<br>
