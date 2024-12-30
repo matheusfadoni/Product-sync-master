@@ -4,7 +4,6 @@ $username = get_option('wc_sync_photo_username');
 $password = get_option('wc_sync_photo_password');
 $url = get_option('wc_sync_photo_url');
 
-
 // Função de log
 function wc_sync_log($message) {
     $file = plugin_dir_path(__DIR__) . 'sync-log.txt';
@@ -56,7 +55,7 @@ function wc_sync_update_product_photo($sku, $image_url) {
 
     try {
         // Busca o produto no outro site
-        $request_url = $url . '/wc/v3/products?sku=' . $sku;
+        $request_url = $url . '/wp-json/wc/v3/products?sku=' . $sku;
         $response = wp_remote_get($request_url, array(
             'headers' => array(
                 'Authorization' => 'Basic ' . base64_encode($username . ':' . $password)
@@ -78,7 +77,7 @@ function wc_sync_update_product_photo($sku, $image_url) {
         $product_id = $body[0]['id'];
         wc_sync_log("Produto encontrado. ID: $product_id. Tentando adicionar imagem...");
 
-        $update_response = wp_remote_post("$url/wc/v3/products/$product_id", array(
+        $update_response = wp_remote_post("$url/wp-json/wc/v3/products/$product_id", array(
             'method' => 'PUT',
             'headers' => array(
                 'Authorization' => 'Basic ' . base64_encode($username . ':' . $password),
@@ -134,7 +133,7 @@ function wc_sync_remove_image_by_name($image_name) {
     wc_sync_log("Iniciando remoção de imagem com nome: $image_name");
 
     try {
-        $media_search_url = $url . "/wp/v2/media?search=" . urlencode($image_name);
+        $media_search_url = $url . "/wp-json/wp/v2/media?search=" . urlencode($image_name);
         $response = wp_remote_get($media_search_url, array(
             'headers' => array(
                 'Authorization' => 'Basic ' . base64_encode($username . ':' . $password)
@@ -156,7 +155,7 @@ function wc_sync_remove_image_by_name($image_name) {
         foreach ($body as $media_item) {
             if (strpos($media_item['source_url'], $image_name) !== false) {
                 $image_id = $media_item['id'];
-                $delete_url = $url . "/wp/v2/media/$image_id";
+                $delete_url = $url . "/wp-json/wp/v2/media/$image_id";
 
                 wc_sync_log("Tentando remover a imagem com ID $image_id no outro site.");
 
@@ -176,7 +175,7 @@ function wc_sync_remove_image_by_name($image_name) {
             }
         }
     } catch (Exception $e) {
-        wc_sync_log("Erro inesperado ao remover imagem: " . $e->getMessage());
+        wc_sync_log("Erro inesperado ao remover imagem: " . $e->get_message());
         return;
     }
 }
