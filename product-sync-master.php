@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Product Sync Master
-Description: Plugin para sincronizar fotos de produtos entre sites WooCommerce baseado no SKU. Versão inicial, simples e bugada.
+Description: Plugin para sincronizar fotos de produtos entre sites WooCommerce baseado no SKU. Versão inicial, simples e estável.
 Version: 0.3.1
 Author: Matheus 
 */
@@ -39,8 +39,8 @@ add_action('admin_menu', 'product_sync_master_add_admin_menu');
 
 function product_sync_master_add_admin_menu() {
     add_menu_page(
-        'Configurações do Product Sync Master', // Título da página
-        'Product Sync Master',                  // Nome do menu
+        'Configurações do Wc Sync Photo', // Título da página
+        'Wc Sync Photo',                  // Nome do menu
         'manage_options',                 // Permissão necessária
         'product_sync_master',                  // Slug da página
         'product_sync_master_settings_page',    // Função de callback para renderizar a página
@@ -51,7 +51,7 @@ function product_sync_master_add_admin_menu() {
 function product_sync_master_settings_page() {
     ?>
     <div class="wrap">
-        <h1>Configurações do Product Sync Master</h1>
+        <h1>Configurações do Wc Sync Photo</h1>
         <form method="post" action="options.php">
             <?php
                 settings_fields('product_sync_master_options_group');
