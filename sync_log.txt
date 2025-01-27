@@ -1,0 +1,30 @@
+[2024-11-18 18:51:19] Produto sem SKU
+[2024-11-18 18:52:22] Produto sem SKU
+[2024-11-22 20:44:34] Sincronização iniciada para SKU: 987654321
+[2024-11-22 20:44:35] Produto SKU 987654321 não encontrado no outro site.
+[2024-11-22 20:47:40] Imagem capturada antes da atualização: mapy.jpg
+[2024-11-22 20:47:40] Sincronização iniciada para SKU: 987654321
+[2024-11-22 20:47:41] Produto SKU 987654321 não encontrado no outro site.
+[2024-11-22 20:48:34] Imagem capturada antes da atualização: mapy.jpg
+[2024-11-22 20:48:34] Sincronização iniciada para SKU: 987654321
+[2024-11-22 20:48:35] Produto SKU 987654321 não encontrado no outro site.
+[2024-12-10 20:07:34] Imagem capturada antes da atualização: mapy.jpg
+[2024-12-10 20:07:34] Sincronização iniciada para SKU: 987654321
+[2024-12-10 20:07:35] Produto SKU 987654321 não encontrado no outro site.
+[2024-12-10 20:08:44] Imagem capturada antes da atualização: mapy.jpg
+[2024-12-10 20:08:44] Sincronização iniciada para SKU: 987654321
+[2024-12-10 20:08:45] Produto SKU 987654321 não encontrado no outro site.
+[2024-12-11 11:57:52] Imagem capturada antes da atualização: mapy.jpg
+[2024-12-11 11:57:52] Sincronização iniciada para SKU: 987654321
+[2024-12-11 11:57:53] Produto SKU 987654321 não encontrado no outro site.
+[2024-12-11 13:08:14] Imagem capturada antes da atualização: mapy.jpg
+[2024-12-11 13:08:14] Sincronização iniciada para SKU: 987654321
+[2024-12-11 13:08:15] Produto SKU 987654321 não encontrado no outro site.
+[2025-01-21 15:38:06] Imagem capturada antes da atualização: mapy.jpg
+[2025-01-21 15:38:07] Sincronização iniciada para SKU: 987654321
+[2025-01-21 15:38:07] Erro conexão SKU 987654321: Não foi fornecido um URL válido.
+[2025-01-21 15:39:17] Imagem capturada antes da atualização: 199352.jpg
+[2025-01-21 15:39:17] Sincronização iniciada para SKU: 987654321
+[2025-01-21 15:39:17] Erro conexão SKU 987654321: Não foi fornecido um URL válido.
+
+[PAREI DE USAR ESTE LOG]
