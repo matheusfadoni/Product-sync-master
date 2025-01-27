@@ -5,12 +5,13 @@ function _log_basic($message, $log_file = 'logs_general.log') {
     if (!file_exists($log_dir)) {
         mkdir($log_dir, 0755, true);
     }
-    if (!file_exists($log_dir . '/' . $log_file)) {
-        file_put_contents($log_dir . '/' . $log_file, '');
+    if (!file_exists($log_dir . DIRECTORY_SEPARATOR  . $log_file)) {
+        file_put_contents($log_dir . DIRECTORY_SEPARATOR  . $log_file, '');
     }
 
     $timestamp = date("Y-m-d H:i:s");
-    file_put_contents($log_dir . '/' . $log_file, "[$timestamp] $message\n", FILE_APPEND);
+    file_put_contents($log_dir . DIRECTORY_SEPARATOR . $log_file, "[$timestamp] $message\n", FILE_APPEND);
+    return;
 }
 
 function log_product_brand($message) {

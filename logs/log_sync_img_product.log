@@ -39,3 +39,9 @@
 [2025-01-24 20:36:32] [CAPTURA] Imagem capturada antes da atualização: 199352.jpg
 [2025-01-24 20:36:32] [REQUISIÇÃO] Sincronização iniciada para SKU: 987654321. URL da imagem: https://darkgoldenrod-stinkbug-118617.hostingersite.com/wp-content/uploads/2024/11/199352.jpg
 [2025-01-24 20:36:32] [ERRO] URL base inválida ou vazia: NULO
+[2025-01-27 20:31:33] [LOCAL] [CAPTURA] Imagem capturada antes da atualização: 199352.jpg
+[2025-01-27 20:31:33] [REQUISIÇÃO] Sincronização iniciada para SKU: 987654321. URL da imagem: https://darkgoldenrod-stinkbug-118617.hostingersite.com/wp-content/uploads/2024/11/199352.jpg
+[2025-01-27 20:31:33] [DEBUG 1] URL base: https://mapyshop.com
+[2025-01-27 20:31:33] [DEBUG 2] URL base: https://mapyshop.com
+[2025-01-27 20:31:33] [DEBUG 3] URL final concatenada: https://mapyshop.com/wp-json/wc/v3/products?sku=987654321
+[2025-01-27 20:31:33] [ERRO] Código de resposta da API: 401. Resposta: {"code":"woocommerce_rest_cannot_view","message":"Sorry, you cannot list resources.","data":{"status":401}}. URL usada: https://mapyshop.com/wp-json/wc/v3/products?sku=987654321
