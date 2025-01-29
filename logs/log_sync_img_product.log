@@ -45,3 +45,38 @@
 [2025-01-27 20:31:33] [DEBUG 2] URL base: https://mapyshop.com
 [2025-01-27 20:31:33] [DEBUG 3] URL final concatenada: https://mapyshop.com/wp-json/wc/v3/products?sku=987654321
 [2025-01-27 20:31:33] [ERRO] Código de resposta da API: 401. Resposta: {"code":"woocommerce_rest_cannot_view","message":"Sorry, you cannot list resources.","data":{"status":401}}. URL usada: https://mapyshop.com/wp-json/wc/v3/products?sku=987654321
+[2025-01-28 12:32:39] [LOCAL] [CAPTURA] Imagem capturada antes da atualização: 199352.jpg
+[2025-01-28 12:32:39] [REQUISIÇÃO] Sincronização iniciada para SKU: 987654321. URL da imagem: https://darkgoldenrod-stinkbug-118617.hostingersite.com/wp-content/uploads/2024/11/199352.jpg
+[2025-01-28 12:32:39] [DEBUG 1] URL base: https://mapyshop.com
+[2025-01-28 12:32:39] [DEBUG 2] URL base: https://mapyshop.com
+[2025-01-28 12:32:39] [DEBUG 3] URL final concatenada: https://mapyshop.com/wp-json/wc/v3/products?sku=987654321
+[2025-01-28 12:32:40] [ERRO] Código de resposta da API: 401. Resposta: {"code":"woocommerce_rest_cannot_view","message":"Sorry, you cannot list resources.","data":{"status":401}}. URL usada: https://mapyshop.com/wp-json/wc/v3/products?sku=987654321
+[2025-01-28 12:59:03] [LOCAL] [CAPTURA] Imagem capturada antes da atualização: 199352.jpg
+[2025-01-28 12:59:03] [REQUISIÇÃO] Sincronização iniciada para SKU: 987654321. URL da imagem: https://darkgoldenrod-stinkbug-118617.hostingersite.com/wp-content/uploads/2024/11/199352.jpg
+[2025-01-28 12:59:03] [DEBUG] URL base: https://mapyshop.com
+[2025-01-28 12:59:03] [DEBUG] URL final concatenada: https://mapyshop.com/wp-json/wc/v3/products?sku=987654321
+[2025-01-28 12:59:04] [REQUISIÇÃO] Produto encontrado. ID: 15. Tentando adicionar imagem...
+[2025-01-28 12:59:07] [DEBUG] Corpo da requisição para SKU 987654321: {"images":[{"src":"https:\/\/darkgoldenrod-stinkbug-118617.hostingersite.com\/wp-content\/uploads\/2024\/11\/199352.jpg"}]}
+[2025-01-28 12:59:07] [REQUISIÇÃO] Imagem adicionada com sucesso ao SKU 987654321 no outro site.
+[2025-01-28 13:04:40] [LOCAL] [CAPTURA] Imagem capturada antes da atualização: 199352.jpg
+[2025-01-28 13:04:40] [REMOTO] Produto com SKU 987654321 teve imagem removida.
+[2025-01-28 13:04:40] [REQUISIÇÃO] Iniciando remoção de imagem com nome: 199352.jpg
+[2025-01-28 13:04:40] [DEBUG] URL para busca de mídia: https://mapyshop.com/wp-json/wp/v2/media?search=199352.jpg
+[2025-01-28 13:04:41] [REQUISIÇÃO] Tentando remover a imagem com ID 28854 no outro site.
+[2025-01-28 13:04:42] [REQUISIÇÃO] Imagem com nome 199352.jpg e ID 28854 removida com sucesso do outro site.
+[2025-01-28 13:04:42] [REQUISIÇÃO] Tentando remover a imagem com ID 28760 no outro site.
+[2025-01-28 13:04:42] [REQUISIÇÃO] Imagem com nome 199352.jpg e ID 28760 removida com sucesso do outro site.
+[2025-01-28 13:04:42] [LOCAL] [REQUISIÇÃO] Imagem destacada removida para SKU: 987654321. Nome: 199352.jpg
+[2025-01-28 13:05:14] [REQUISIÇÃO] Sincronização iniciada para SKU: 987654321. URL da imagem: https://darkgoldenrod-stinkbug-118617.hostingersite.com/wp-content/uploads/2024/11/cropped-cropped-mapy.png
+[2025-01-28 13:05:14] [DEBUG] URL base: https://mapyshop.com
+[2025-01-28 13:05:14] [DEBUG] URL final concatenada: https://mapyshop.com/wp-json/wc/v3/products?sku=987654321
+[2025-01-28 13:05:15] [REQUISIÇÃO] Produto encontrado. ID: 15. Tentando adicionar imagem...
+[2025-01-28 13:05:19] [DEBUG] Corpo da requisição para SKU 987654321: {"images":[{"src":"https:\/\/darkgoldenrod-stinkbug-118617.hostingersite.com\/wp-content\/uploads\/2024\/11\/cropped-cropped-mapy.png"}]}
+[2025-01-28 13:05:19] [REQUISIÇÃO] Imagem adicionada com sucesso ao SKU 987654321 no outro site.
+[2025-01-28 13:05:39] [LOCAL] [CAPTURA] Imagem capturada antes da atualização: cropped-cropped-mapy.png
+[2025-01-28 13:05:39] [REQUISIÇÃO] Sincronização iniciada para SKU: 987654321. URL da imagem: https://darkgoldenrod-stinkbug-118617.hostingersite.com/wp-content/uploads/2024/11/cropped-cropped-mapy.png
+[2025-01-28 13:05:39] [DEBUG] URL base: https://mapyshop.com
+[2025-01-28 13:05:39] [DEBUG] URL final concatenada: https://mapyshop.com/wp-json/wc/v3/products?sku=987654321
+[2025-01-28 13:05:40] [REQUISIÇÃO] Produto encontrado. ID: 15. Tentando adicionar imagem...
+[2025-01-28 13:05:42] [DEBUG] Corpo da requisição para SKU 987654321: {"images":[{"src":"https:\/\/darkgoldenrod-stinkbug-118617.hostingersite.com\/wp-content\/uploads\/2024\/11\/cropped-cropped-mapy.png"}]}
+[2025-01-28 13:05:42] [REQUISIÇÃO] Imagem adicionada com sucesso ao SKU 987654321 no outro site.

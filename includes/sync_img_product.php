@@ -58,11 +58,9 @@ function sync_update_product_photo($sku, $image_url) {
             log_img_product("[ERRO] URL base inválida ou vazia: " . ($url ?: 'NULO'));
             return;
         }
-        log_img_product("[DEBUG 1] URL base: $url");
         $url = trim($url); // Remove espaços extras
-        log_img_product("[DEBUG 2] URL base: $url");
         $request_url = rtrim($url, '/') . '/wp-json/wc/v3/products?sku=' . $sku;
-        log_img_product("[DEBUG 3] URL final concatenada: $request_url");
+        log_img_product("[REQUISIÇÃO] URL final concatenada: $request_url");
 
 
         $response = wp_remote_get($request_url, array(
@@ -108,7 +106,7 @@ function sync_update_product_photo($sku, $image_url) {
         ));
 
         // Log do corpo da requisição
-        log_img_product("[DEBUG] Corpo da requisição para SKU $sku: " . json_encode(array(
+        log_img_product("[REQUISIÇÃO] Corpo da requisição para SKU $sku: " . json_encode(array(
             'images' => array(
                 array('src' => $image_url)
             )
@@ -160,7 +158,7 @@ function sync_remove_image_by_name($image_name) {
 
     try {
         $media_search_url = rtrim($url, '/') . "/wp-json/wp/v2/media?search=" . urlencode($image_name);
-        log_img_product("[DEBUG] URL para busca de mídia: $media_search_url");
+        log_img_product("[REQUISIÇÃO] URL para busca de mídia: $media_search_url");
 
         $response = wp_remote_get($media_search_url, array(
             'headers' => array(
