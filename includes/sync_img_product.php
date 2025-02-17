@@ -5,6 +5,80 @@ $username = get_option('psm_username');
 $password = get_option('psm_password');
 $url = get_option('psm_url');
 
+// NEW FUNCTIONS
+function check_and_create_sync_table() { // Checar e criar tabela de sincronização de imagens
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'psm_product_image_sync';
+    
+    if ($wpdb->get_var("SHOW TABLES LIKE '{$table_name}'") !== $table_name) {
+        $charset_collate = $wpdb->get_charset_collate();
+        
+        $sql = "CREATE TABLE $table_name (
+            id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            product_id BIGINT UNSIGNED NOT NULL,
+            sku VARCHAR(255) NOT NULL,
+            image_url TEXT NOT NULL,
+            status ENUM('pending', 'applied', 'error') NOT NULL DEFAULT 'pending',
+            error_message TEXT DEFAULT NULL,
+            retry_count INT UNSIGNED DEFAULT 0,
+            last_attempt DATETIME DEFAULT NULL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+        ) $charset_collate;";
+        
+        require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+        dbDelta($sql);
+    }
+}
+
+function save_product_image_sync_record($product_id, $sku, $image_url, $status = 'pending', $error_message = NULL) { // Salvar registro de sincronização de imagem
+    global $wpdb;
+    check_and_create_sync_table();
+    
+    $table_name = $wpdb->prefix . 'psm_product_image_sync';
+    $wpdb->insert(
+        $table_name,
+        [
+            'product_id' => $product_id,
+            'sku' => $sku,
+            'image_url' => $image_url,
+            'status' => $status,
+            'error_message' => $error_message,
+            'retry_count' => 0,
+            'last_attempt' => current_time('mysql')
+        ],
+        ['%d', '%s', '%s', '%s', '%s', '%d', '%s']
+    );
+}
+
+function update_sync_status($product_id, $status, $error_message = NULL) { // Atualizar status de sincronização
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'psm_product_image_sync';
+
+    // Buscar o retry_count atual
+    $retry_count = $wpdb->get_var($wpdb->prepare("SELECT retry_count FROM $table_name WHERE product_id = %d", $product_id));
+    $retry_count = is_null($retry_count) ? 0 : $retry_count + 1;
+
+    $wpdb->update(
+        $table_name,
+        [
+            'status' => $status,
+            'error_message' => $error_message,
+            'retry_count' => $retry_count,
+            'last_attempt' => current_time('mysql', 1)
+        ],
+        ['product_id' => $product_id],
+        ['%s', '%s', '%d', '%s'],
+        ['%d']
+    );
+}
+
+
+
+
+
+
+// __________________________________________ OLD FUNCTIONS __________________________________________
 // Functions to sync images of products
 function sync_on_product_save($post_id, $post, $update) {
     if ($post->post_type !== 'product' || !$update) return;
