@@ -2,9 +2,10 @@
 /*
 Plugin Name: Product Sync Master
 Description: Plugin para sincronizar fotos de produtos entre sites WooCommerce baseado no SKU. Versão inicial, simples e estável.
-Version: 0.4.1
+Version: 0.4.2
 Author: Matheus 
 */
+if (!defined('ABSPATH')) exit;
 
 // Verificação do WooCommerce ativo
 if (!in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
@@ -28,11 +29,11 @@ add_action('admin_menu', 'add_admin_menu');
 
 function add_admin_menu() {
     add_menu_page(
-        'Configurações do Product Sync Master', // Título da página
-        'Product Sync Master',                  // Nome do menu
-        'manage_options',                 // Permissão necessária
-        'product_sync_master',                  // Slug da página
-        'settings_page',    // Função de callback para renderizar a página
+        'Configurações do Product Sync Master',
+        'Product Sync Master',
+        'manage_options',
+        'product_sync_master',
+        'settings_page',
         'dashicons-update'
     );
 }
@@ -70,6 +71,18 @@ function url_render() {
 // Inicializa as configurações
 add_action('admin_init', 'settings_init');
 
+// Loga criação e edição de produto com base em post_date e post_modified
+add_action('save_post_product', 'psm_log_product_crud_timestamps', 10, 3);
+
+function psm_log_product_crud_timestamps($post_ID, $post, $update) {
+    if ($post->post_status !== 'publish') return;
+
+    $created = $post->post_date;
+    $updated = $post->post_modified;
+
+    log_product_crud_timestamps($post_ID, $created, $updated);
+}
+
 function settings_init() {
     register_setting('psm_options_group', 'psm_username', 'sanitize_text_field');
     register_setting('psm_options_group', 'psm_password', 'sanitize_text_field');
@@ -81,4 +94,3 @@ function settings_init() {
     add_settings_field('psm_password', 'Chave da API', 'password_render', 'product_sync_master', 'psm_section');
     add_settings_field('psm_url', 'URL do Site Remoto', 'url_render', 'product_sync_master', 'psm_section');
 }
-

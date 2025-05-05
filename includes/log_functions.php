@@ -25,3 +25,7 @@ function log_img_product($message) {
 function log_config_credentials($message) {
     _log_basic($message, 'log_config_credentials.log');
 }
+function log_product_crud_timestamps($post_ID, $created, $updated) {
+    $msg = "Produto $post_ID | Criado em $created | Editado em $updated";
+    _log_basic($msg, 'log_product_crud_timestamps.log');
+}
